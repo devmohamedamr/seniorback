@@ -10,3 +10,9 @@ function addNew($name,$email,$password){
         return false;
     }
 }
+
+function CheckIfEmailExit($email){
+    $connection = mysqli_connect("localhost","root","","senior");
+    $q = mysqli_query($connection,"SELECT * FROM `user` WHERE `email`  = '$email' ");
+    return mysqli_num_rows($q);
+}

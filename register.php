@@ -27,13 +27,18 @@ if(isset($_POST['name'])){
     if(count($erorr) == 0){
         // insert
 
-       $user =  addNew($name,$email,$password);
+       if(CheckIfEmailExit($email) == 0){
+        $user =  addNew($name,$email,$password);
 
-       if($user == 1){
-        echo "register success   <a href='login.php'>login</a>";
-        }else{
-            echo "plz try again";
-        }
+        if($user == 1){
+         echo "register success   <a href='login.php'>login</a>";
+         }else{
+             echo "plz try again";
+         }
+       }else{
+           echo "email is exist";
+       }
+     
 
     }else{
         echo "<ul>";
